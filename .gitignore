@@ -1,0 +1,4 @@
+# GitHub Release assets are uploaded separately and are not committed to the repository.
+*.exe
+*.zip
+*.sha256
