@@ -1,13 +1,15 @@
 # Agent Meter
 
-Agent Meterは、Codex、Claude Code／GLMなどの利用状況をPC内で確認するWindows向けローカル監視アプリです。
+Agent Meterは、コーディングエージェントの利用状況をPC内で確認するWindows向けローカル監視アプリです。Codex・Claude Code／GLM対応のフル版と、Codex・GLM機能を持たないClaude Code専用版を配布しています。
 
 このリポジトリは、利用者向けのバイナリ配布とドキュメントだけを公開するためのリポジトリです。開発用ソースコード、テストデータ、開発履歴は含みません。
 
 ## ダウンロード
 
 1. [Releases](https://github.com/sachsen/llm_cost_manager_release/releases/latest)を開きます。
-2. `agent-meter-windows-x64-<version>.zip`と、同名の`.sha256`ファイルをダウンロードします。
+2. 使用したい版のZIPと、同名の`.sha256`ファイルをダウンロードします。
+   - フル版: `agent-meter-windows-x64-<version>.zip`
+   - Claude Code専用版: `agent-meter-claude-only-windows-x64-<version>.zip`
 3. SHA256を照合してからZIPを展開します。
 
 PowerShellでの確認例です。
@@ -19,6 +21,15 @@ Get-Content .\agent-meter-windows-x64-0.1.0.zip.sha256
 
 2つのハッシュが一致しない場合は実行しないでください。
 
+## エディションの選択
+
+| 版 | 対象 | Codex／GLMへの動作 |
+|---|---|---|
+| フル版 | Codex、Claude Code、GLM、Copilot検出 | 対応機能あり |
+| [Claude Code専用版](claude-only/README.md) | Claude Codeのみ | 通信・読取・設定変更・表示のすべてなし |
+
+Claude Code専用版は、Claude Code上でモデル名が`GLM`から始まるセッションも集計しません。2つの版は同じClaude Code連携設定を使うため、同時利用せずどちらか一方を選んでください。
+
 ## 動作環境
 
 - Windows 10／11 x64
@@ -28,7 +39,7 @@ Get-Content .\agent-meter-windows-x64-0.1.0.zip.sha256
 
 管理者権限やインストーラーは不要です。現在の配布バイナリにはコード署名がありません。Windowsの警告が表示された場合は、入手元とSHA256を確認できない限り実行しないでください。
 
-## インストール
+## フル版のインストール
 
 1. ZIPを任意の専用フォルダーへ展開します。
 2. `agent-meter-desktop.exe`と`agent-meter-hook-helper.exe`を同じフォルダーに置いたままにします。
